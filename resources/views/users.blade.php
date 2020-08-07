@@ -1,6 +1,26 @@
 @extends('inicio')
 
+@section('tabla')
 <div class="container my-3">
+    @if(session('mensaje'))
+    <div class="container alert alert-success">
+        {{session('mensaje')}}
+    </div>
+    @endif
+    <div class="container">
+        <form action="{{route('usuarios.crear')}}" method="POST">
+            @csrf
+            @error('nombre')
+            <div class="alert alert-danger">Falta ingresar el nombre</div>
+            @enderror
+            @error('email')
+            <div class="alert alert-danger">Falta ingresar el correo electronico</div>
+            @enderror
+            <input type="text" value="{{old('nombre')}}" class="form-control mb-2" placeholder="Ingrese nombre" name="nombre">
+            <input type="text" value="{{old('email')}}" class="form-control mb-2" placeholder="Ingrese email" name="email">
+            <button type="submit" class="btn btn-primary btn-block">Agregar</button>
+        </form>
+    </div>
     <h1>Usuarios</h1>
     <table class="table table-dark">
         <thead>
@@ -8,7 +28,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Email</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -23,15 +43,17 @@
                 <td>
                     {{$item->email}}
                 </td>
-                <td>Facebook</td>
+                <td>
+                    <a href="{{route('usuarios.editar',$item)}}" class="btn btn-warning btn-sm">
+                        Editar
+                    </a>
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    <div class="mt-5 bg-dark text-white container text-center">
-        <p>FOOTER</p>
-    </div>
 </div>
+@endsection
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,6 +1,6 @@
-@extends('users')
+@extends('inicio')
 
-@section('section')
+@section('seccion')
 <h1>Detalle del Usuario:</h1>
 <h4>ID: {{$dato->id}}</h4>
 <h4>Nombre:{{$dato->nombre}}</h4>

@@ -59,6 +59,12 @@ Route::get('publica2', function() {
 
 Route::get('publica3', 'UserController@saludo'); //Misma funcion que arriba pero la logica esta en el controlador UserController
 
-Route::get('base', 'UserController@inicio');
+Route::get('base', 'UserController@inicio')->name('base'); //Si se quiere enlazar a un boton debe ponerse ->name() para poder enrutarlo
 
 Route::get('base/{id}','UserController@detalle')->name('usuarios/detalle');
+
+Route::post('base','UserController@crear')->name('usuarios.crear');
+
+Route::get('editar/{id}','UserController@editar')->name('usuarios.editar');
+
+Route::put('editar/{id}','UserController@update')->name('usuarios.update');
