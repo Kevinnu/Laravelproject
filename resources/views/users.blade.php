@@ -47,6 +47,11 @@
                     <a href="{{route('usuarios.editar',$item)}}" class="btn btn-warning btn-sm">
                         Editar
                     </a>
+                    <form action="{{route('usuarios.eliminar',$item)}}" class="d-inline" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

@@ -68,3 +68,5 @@ Route::post('base','UserController@crear')->name('usuarios.crear');
 Route::get('editar/{id}','UserController@editar')->name('usuarios.editar');
 
 Route::put('editar/{id}','UserController@update')->name('usuarios.update');
+
+Route::delete('eliminar/{id}','UserController@eliminar')->name('usuarios.eliminar');

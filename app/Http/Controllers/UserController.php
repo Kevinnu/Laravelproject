@@ -60,4 +60,10 @@ class UserController extends Controller {
         return back()->with('mensaje', 'Nota actualizada');
     }
 
+    public function eliminar(Request $request, $id) {
+        $usuarioeliminar = App\Usuario::findorfail($id);
+        $usuarioeliminar->delete();
+        return back()->with('mensaje', 'El usuario fue eliminado');
+    }
+
 }
