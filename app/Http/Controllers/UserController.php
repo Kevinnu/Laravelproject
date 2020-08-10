@@ -26,7 +26,7 @@ class UserController extends Controller {
 //Misma funcion que arriba pero con RETURN VIEW se retorna una HTML llamado USERS con los datos ingresados
 
     public function inicio() {
-        $datos = App\Usuario::all();
+        $datos = App\Usuario::paginate(2);
         return view('users', compact('datos'));
     }
 
