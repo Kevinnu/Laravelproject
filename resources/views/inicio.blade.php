@@ -13,13 +13,14 @@
         <div class="container my-4">
             <a class="btn btn-primary" href="{{route('base')}}">Inicio</a>
         </div>
-        <div>
+        <div class="container">
             @yield('editar')
             @yield('tabla')
+            @yield('autos')
         </div>
-        <div class="mt-5 bg-dark text-white container text-center">
+       <div class="container mt-5 bg-dark text-white text-center">
             <p>FOOTER</p>
-        </div>
+        </div> 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

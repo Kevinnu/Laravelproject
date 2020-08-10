@@ -66,4 +66,26 @@ class UserController extends Controller {
         return back()->with('mensaje', 'El usuario fue eliminado');
     }
 
+    public function mostrar(Request $request) {
+        $autos = App\Auto::all();
+        return view('autos', compact('autos'));
+    }
+
+    public function cargarautos(Request $request) {
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen');
+            $newname = time() . $imagen->getClientOriginalName();
+            $imagen->move(public_path() . '/images/', $newname);
+        }
+        $auto = new App\Auto();
+        $auto->nombre = $request->nombre;
+        $auto->edad = $request->edad;
+        $auto->marca = $request->marca;
+        $auto->modelo = $request->modelo;
+        $auto->descripcion = $request->descripcion;
+        $auto->imagen = $newname;
+        $auto->save();
+        return back();
+    }
+
 }

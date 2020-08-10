@@ -70,3 +70,7 @@ Route::get('editar/{id}','UserController@editar')->name('usuarios.editar');
 Route::put('editar/{id}','UserController@update')->name('usuarios.update');
 
 Route::delete('eliminar/{id}','UserController@eliminar')->name('usuarios.eliminar');
+
+Route::get('autos','UserController@mostrar');
+
+Route::post('autos','UserController@cargarautos')->name('autos.cargar');
