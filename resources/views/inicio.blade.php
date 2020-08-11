@@ -12,11 +12,13 @@
     <body>
         <div class="container my-4">
             <a class="btn btn-primary" href="{{route('base')}}">Inicio</a>
+            <a class="btn btn-primary" href="{{route('autos')}}">Autos</a>
         </div>
         <div class="container">
             @yield('editar')
             @yield('tabla')
             @yield('autos')
+            @yield('autosedit')
         </div>
        <div class="container mt-5 bg-dark text-white text-center">
             <p>FOOTER</p>

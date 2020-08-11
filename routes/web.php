@@ -71,6 +71,12 @@ Route::put('editar/{id}','UserController@update')->name('usuarios.update');
 
 Route::delete('eliminar/{id}','UserController@eliminar')->name('usuarios.eliminar');
 
-Route::get('autos','UserController@mostrar');
+Route::get('autos','UserController@mostrar')->name('autos');
 
 Route::post('autos','UserController@cargarautos')->name('autos.cargar');
+
+Route::get('autos/{id}','UserController@editarautos')->name('autos.editar');
+
+Route::put('autos/{id}','UserController@updateautos')->name('autos.update');
+
+Route::delete('elimacion/{id}','UserController@deleteautos')->name('autos.eliminar');

@@ -72,6 +72,14 @@ class UserController extends Controller {
     }
 
     public function cargarautos(Request $request) {
+        $request->validate([
+            'nombre'=>'required',
+            'edad'=>'required',
+            'marca'=>'required',
+            'modelo'=>'required',
+            'descripcion'=>'required',
+            'imagen'=>'required' 
+        ]);
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
             $newname = time() . $imagen->getClientOriginalName();
@@ -85,7 +93,28 @@ class UserController extends Controller {
         $auto->descripcion = $request->descripcion;
         $auto->imagen = $newname;
         $auto->save();
-        return back();
+        return back()->with('mensaje','EL auto fue cargado exitosamente');
     }
 
+    public function editarautos($id) {
+        $auto = App\Auto::findorfail($id);
+        return view('autosedit', compact('auto'));
+    }
+
+    public function updateautos(Request $request, $id) {
+        $autosedit = App\Auto::findorfail($id);
+        $autosedit->nombre = $request->nombre;
+        $autosedit->edad = $request->edad;
+        $autosedit->marca = $request->marca;
+        $autosedit->modelo = $request->modelo;
+        $autosedit->descripcion = $request->descripcion;
+        $autosedit->save();
+        return back()->with('mensaje', 'El auto fue editado');
+    }
+
+    public function deleteautos(Request $request,$id){
+        $deleteautos= App\Auto::findorfail($id);
+        $deleteautos->delete();
+        return back()->with('mensaje','El auto fue eliminado exitosamente');
+    }
 }
