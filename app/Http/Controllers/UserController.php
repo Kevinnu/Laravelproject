@@ -67,18 +67,18 @@ class UserController extends Controller {
     }
 
     public function mostrar(Request $request) {
-        $autos = App\Auto::all();
+        $autos = App\Auto::paginate(6);
         return view('autos', compact('autos'));
     }
 
     public function cargarautos(Request $request) {
         $request->validate([
-            'nombre'=>'required',
-            'edad'=>'required',
-            'marca'=>'required',
-            'modelo'=>'required',
-            'descripcion'=>'required',
-            'imagen'=>'required' 
+            'nombre' => 'required',
+            'edad' => 'required',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'descripcion' => 'required',
+            'imagen' => 'required'
         ]);
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
@@ -93,7 +93,7 @@ class UserController extends Controller {
         $auto->descripcion = $request->descripcion;
         $auto->imagen = $newname;
         $auto->save();
-        return back()->with('mensaje','EL auto fue cargado exitosamente');
+        return back()->with('mensaje', 'EL auto fue cargado exitosamente');
     }
 
     public function editarautos($id) {
@@ -112,9 +112,10 @@ class UserController extends Controller {
         return back()->with('mensaje', 'El auto fue editado');
     }
 
-    public function deleteautos(Request $request,$id){
-        $deleteautos= App\Auto::findorfail($id);
+    public function deleteautos(Request $request, $id) {
+        $deleteautos = App\Auto::findorfail($id);
         $deleteautos->delete();
-        return back()->with('mensaje','El auto fue eliminado exitosamente');
+        return back()->with('mensaje', 'El auto fue eliminado exitosamente');
     }
+
 }

@@ -61,22 +61,35 @@ Route::get('publica3', 'UserController@saludo'); //Misma funcion que arriba pero
 
 Route::get('base', 'UserController@inicio')->name('base'); //Si se quiere enlazar a un boton debe ponerse ->name() para poder enrutarlo
 
-Route::get('base/{id}','UserController@detalle')->name('usuarios/detalle');
+Route::get('base/{id}', 'UserController@detalle')->name('usuarios/detalle');
 
-Route::post('base','UserController@crear')->name('usuarios.crear');
+Route::post('base', 'UserController@crear')->name('usuarios.crear');
 
-Route::get('editar/{id}','UserController@editar')->name('usuarios.editar');
+Route::get('editar/{id}', 'UserController@editar')->name('usuarios.editar');
 
-Route::put('editar/{id}','UserController@update')->name('usuarios.update');
+Route::put('editar/{id}', 'UserController@update')->name('usuarios.update');
 
-Route::delete('eliminar/{id}','UserController@eliminar')->name('usuarios.eliminar');
+Route::delete('eliminar/{id}', 'UserController@eliminar')->name('usuarios.eliminar');
 
-Route::get('autos','UserController@mostrar')->name('autos');
+Route::resource('notas', 'AutoController');
 
-Route::post('autos','UserController@cargarautos')->name('autos.cargar');
+Route::get('galeria','UserController@mostrar');
 
-Route::get('autos/{id}','UserController@editarautos')->name('autos.editar');
+Route::get('autos', 'UserController@mostrar')->name('autos');
 
-Route::put('autos/{id}','UserController@updateautos')->name('autos.update');
+Route::group(['middleware' => 'auth'], function() {
 
-Route::delete('elimacion/{id}','UserController@deleteautos')->name('autos.eliminar');
+    Route::get('formulario', function() {
+        return view('formulario');
+    })->name('formulario');
+
+   // Route::get('autos', 'UserController@mostrar')->name('autos');
+
+    Route::post('autos', 'UserController@cargarautos')->name('autos.cargar');
+
+    Route::get('autos/{id}', 'UserController@editarautos')->name('autos.editar');
+
+    Route::put('autos/{id}', 'UserController@updateautos')->name('autos.update');
+
+    Route::delete('elimacion/{id}', 'UserController@deleteautos')->name('autos.eliminar');
+});
