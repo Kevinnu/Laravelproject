@@ -38,6 +38,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('formulario')}}">Subir</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('publicaciones')}}">Post</a>
+                        </li>
                     </ul>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>

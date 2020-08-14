@@ -73,17 +73,13 @@ Route::delete('eliminar/{id}', 'UserController@eliminar')->name('usuarios.elimin
 
 Route::resource('notas', 'AutoController');
 
-Route::get('galeria','UserController@mostrar');
-
-Route::get('autos', 'UserController@mostrar')->name('autos');
-
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get('formulario', function() {
         return view('formulario');
     })->name('formulario');
 
-   // Route::get('autos', 'UserController@mostrar')->name('autos');
+    Route::get('autos', 'UserController@mostrar')->name('autos');
 
     Route::post('autos', 'UserController@cargarautos')->name('autos.cargar');
 
@@ -93,3 +89,5 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::delete('elimacion/{id}', 'UserController@deleteautos')->name('autos.eliminar');
 });
+
+Route::get('publicaciones', 'UserController@post')->name('publicaciones');

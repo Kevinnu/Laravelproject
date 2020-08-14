@@ -117,5 +117,10 @@ class UserController extends Controller {
         $deleteautos->delete();
         return back()->with('mensaje', 'El auto fue eliminado exitosamente');
     }
+    
+    public function post(Request $request){
+        $post = App\Auto::paginate(8);
+        return view('publicaciones', compact('post'));
+    }
 
 }

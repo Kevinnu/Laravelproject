@@ -14,6 +14,7 @@
         @yield('form')
         @yield('editar')
         @yield('tabla')
+        @yield('section')
         @yield('autos')
         @yield('autosedit')
   @endsection
