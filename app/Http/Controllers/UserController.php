@@ -119,8 +119,8 @@ class UserController extends Controller {
     }
     
     public function post(Request $request){
-        $post = App\Auto::paginate(8);
-        return view('publicaciones', compact('post'));
+        $autos = App\Auto::paginate(8);
+        return view('autosglobal', compact('autos'));
     }
 
 }

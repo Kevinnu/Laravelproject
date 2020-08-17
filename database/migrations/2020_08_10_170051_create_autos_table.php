@@ -21,6 +21,7 @@ class CreateAutosTable extends Migration
             $table->string('modelo');
             $table->text('descripcion');
             $table->string('imagen');
+            $table->string('usuario');
             $table->timestamps();
         });
     }

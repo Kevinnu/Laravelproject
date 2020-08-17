@@ -19,9 +19,8 @@ class AutoController extends Controller {
      */
     public function index() {
         $usuarioEmail = auth()->user()->email;
-       // $autos = User::where('email',$usuarioEmail)->paginate(6);
-        $autos= App\Auto::paginate(6);
-        return view ('autos', compact('autos'));
+        $autos = App\Auto::where('usuario', $usuarioEmail)->paginate(6);
+        return view('autos', compact('autos'));
     }
 
     /**
@@ -30,7 +29,7 @@ class AutoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        //
+        return view('formulario');
     }
 
     /**
@@ -40,7 +39,22 @@ class AutoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        $autos = new App\Auto();
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen');
+            $newname = time() . $imagen->getClientOriginalname();
+            $imagen->move(public_path() . '/images/', $newname);
+        }
+        $autos->nombre = $request->nombre;
+        $autos->edad = $request->edad;
+        $autos->marca = $request->marca;
+        $autos->modelo = $request->modelo;
+        $autos->descripcion = $request->descripcion;
+        $autos->imagen = $newname;
+        $autos->usuario = auth()->user()->email;
+        $autos->save();
+
+        return back()->with('mensaje', 'Auto agregado!');
     }
 
     /**
@@ -60,7 +74,8 @@ class AutoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        $auto = App\Auto::Findorfail($id);
+        return view('autosedit', compact('auto'));
     }
 
     /**
@@ -71,7 +86,16 @@ class AutoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        $autoedit = App\Auto::findorfail($id);
+        $autoedit->nombre = $request->nombre;
+        $autoedit->edad = $request->edad;
+        $autoedit->marca = $request->marca;
+        $autoedit->modelo = $request->modelo;
+        $autoedit->descripcion = $request->descripcion;
+        if($request->hasfile('imagen')){
+        $autoedit->imagen = $request->imagen;}
+        $autoedit->save();
+        return back()->with('mensaje', 'Auto actualizado');
     }
 
     /**
@@ -81,7 +105,9 @@ class AutoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        $autodelete= App\Auto::FindOrFail($id);
+        $autodelete->delete();
+        return back()->with('mensaje','El auto fue eliminado');
     }
 
 }

@@ -6,7 +6,7 @@
     @if(session('mensaje'))
     <div class="alert alert-success">{{session('mensaje')}}</div>
     @endif
-    <form action="{{route('autos.cargar')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{action('AutoController@store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         @error('nombre')
         <div class="alert alert-danger">Falta ingresar el nombre</div>

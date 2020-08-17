@@ -6,7 +6,7 @@
     @if(session('mensaje'))
     <div class="alert alert-success">{{session('mensaje')}}</div>
     @endif
-    <form action="{{route('autos.update',$auto->id)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{action('AutoController@update',$auto->id)}}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <input class="form-control mb-2" type="text" value="{{$auto->nombre}}" name="nombre" placeholder="Nombre">
@@ -21,7 +21,7 @@
 
 <div class="container">
     <div class="card" style="width: 500px; height: auto;">
-        <a href="../images/{{$auto->imagen}}"><img src="../images/{{$auto->imagen}}" class="card-img-top" alt="..."></a>
+        <a href="../../images/{{$auto->imagen}}"><img src="../../images/{{$auto->imagen}}" class="card-img-top" alt="..."></a>
         <div class="card-body">
             <p class="card-text"><strong>{{$auto->marca. " " . $auto->modelo}}</strong></p>
             <p class="card-text">Dueño {{$auto->nombre}} <br>{{$auto->descripcion}}</p>

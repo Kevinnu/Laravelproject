@@ -71,9 +71,7 @@ Route::put('editar/{id}', 'UserController@update')->name('usuarios.update');
 
 Route::delete('eliminar/{id}', 'UserController@eliminar')->name('usuarios.eliminar');
 
-Route::resource('notas', 'AutoController');
-
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth','middleware' => 'admin'], function() {
 
     Route::get('formulario', function() {
         return view('formulario');
@@ -90,4 +88,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::delete('elimacion/{id}', 'UserController@deleteautos')->name('autos.eliminar');
 });
 
-Route::get('publicaciones', 'UserController@post')->name('publicaciones');
+Route::get('autosglobal', 'UserController@post');
+
+Route::resource('autosupload', 'AutoController');
