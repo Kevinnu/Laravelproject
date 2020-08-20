@@ -30,7 +30,7 @@
                             </a>  
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('base')}}">Inicio</a>
+                            <a class="nav-link" href="{{route('inicio.pagina')}}">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('autos')}}">Autos</a>

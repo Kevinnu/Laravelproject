@@ -2,7 +2,20 @@
 
 @section('autos')
 <div class="container">
+   @if(session('mensaje'))
     <div class="row">
+        
+        <div class="card">
+            <div class="card-header">
+                Featured
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{session('mensaje')}}</h5>
+                <p class="card-text">Si queres subir fotos de tu autos hace click en el boton</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    @endif
         @foreach($autos as $auto)
         <div class="float-left">
             <div class="card m-2">

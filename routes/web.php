@@ -25,7 +25,7 @@ Route::get('prueba', function() {
     return 'Hola mundo';
 });
 
-Route::get('user/{name?}', function($name = null) {
+Route::get('user/{name}', function($name = null) {
     return 'El nombre es: ' . $name;
 })->where('name', '[A-Za-z]+');
 
@@ -91,3 +91,13 @@ Route::group(['middleware' => 'auth','middleware' => 'admin'], function() {
 Route::get('autosglobal', 'UserController@post');
 
 Route::resource('autosupload', 'AutoController');
+
+Route::get('inicio','UserController@start')->name('inicio.pagina');
+
+Route::get('rodrigo/{ola?}', function($ola = null) {
+    return 'El nombre es: ' . $ola;
+})->where('ola', '[A-Za-z]+');
+
+Route::get('rodrigos',function(){
+        return view('autos');
+});

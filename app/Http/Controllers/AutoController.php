@@ -92,8 +92,9 @@ class AutoController extends Controller {
         $autoedit->marca = $request->marca;
         $autoedit->modelo = $request->modelo;
         $autoedit->descripcion = $request->descripcion;
-        if($request->hasfile('imagen')){
-        $autoedit->imagen = $request->imagen;}
+        if ($request->hasfile('imagen')) {
+            $autoedit->imagen = $request->imagen;
+        }
         $autoedit->save();
         return back()->with('mensaje', 'Auto actualizado');
     }
@@ -105,9 +106,9 @@ class AutoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $autodelete= App\Auto::FindOrFail($id);
+        $autodelete = App\Auto::FindOrFail($id);
         $autodelete->delete();
-        return back()->with('mensaje','El auto fue eliminado');
+        return back()->with('mensaje', 'El auto fue eliminado');
     }
 
 }

@@ -26,7 +26,7 @@ class UserController extends Controller {
 //Misma funcion que arriba pero con RETURN VIEW se retorna una HTML llamado USERS con los datos ingresados
 
     public function inicio() {
-        $datos = App\Usuario::paginate(2);
+        $datos = App\Usuario::paginate(3);
         return view('users', compact('datos'));
     }
 
@@ -117,10 +117,15 @@ class UserController extends Controller {
         $deleteautos->delete();
         return back()->with('mensaje', 'El auto fue eliminado exitosamente');
     }
-    
-    public function post(Request $request){
-        $autos = App\Auto::paginate(8);
+
+    public function post(Request $request) {
+        $autos = App\Auto::orderBy('created_at','DESC')->paginate(9);
         return view('autosglobal', compact('autos'));
+    }
+
+    public function start() {
+        $post = App\Auto::orderBy('created_at', 'DESC')->paginate(4);
+        return view('publicaciones', compact('post'));
     }
 
 }
