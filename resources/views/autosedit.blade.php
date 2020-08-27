@@ -10,9 +10,14 @@
         @method('PUT')
         @csrf
         <input class="form-control mb-2" type="text" value="{{$auto->nombre}}" name="nombre" placeholder="Nombre">
-        <input class="form-control mb-2" type="number" value="{{$auto->edad}}" name="edad" placeholder="Edad">
         <input class="form-control mb-2" type="text" value="{{$auto->marca}}" name="marca" placeholder="Marca">
         <input class="form-control mb-2" type="text" value="{{$auto->modelo}}" name="modelo" placeholder="Modelo">
+        <select class="form-control mb-2" name="categoria">
+            <option value="Tracdeable">Trackdeable</option>
+            <option value="Supermercable">Supermercable</option>
+            <option value="Stanced">Stanced</option>
+        </select>
+        <input class="form-control mb-2" type="number" value="{{$auto->anio}}" name="anio" placeholder="Año">
         <input class="form-control mb-2" type="text" value="{{$auto->descripcion}}" name="descripcion" placeholder="Descripcion">
         <input class="form-control mb-2" type="file" name="imagen" accept="image/*">
         <button class="btn btn-primary btn-block" type="submit">Subir</button>

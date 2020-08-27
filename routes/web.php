@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Libro;
 
 /*
   |--------------------------------------------------------------------------
@@ -94,10 +95,7 @@ Route::resource('autosupload', 'AutoController');
 
 Route::get('inicio','UserController@start')->name('inicio.pagina');
 
-Route::get('rodrigo/{ola?}', function($ola = null) {
-    return 'El nombre es: ' . $ola;
-})->where('ola', '[A-Za-z]+');
-
-Route::get('rodrigos',function(){
-        return view('autos');
+Route::get('libros', function () {
+    $libros = Libro::all();
+    return view('libros', compact('libros'));
 });

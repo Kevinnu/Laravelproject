@@ -11,9 +11,6 @@
         @error('nombre')
         <div class="alert alert-danger">Falta ingresar el nombre</div>
         @enderror
-        @error('edad')
-        <div class="alert alert-danger">Falta ingresar la edad</div>
-        @enderror
         @error('marca')
         <div class="alert alert-danger">Falta ingresar la marca</div>
         @enderror
@@ -27,9 +24,14 @@
         <div class="alert alert-danger">Falta ingresar la foto del vehiculo</div>
         @enderror
         <input class="form-control mb-2" type="text" name="nombre" placeholder="Nombre">
-        <input class="form-control mb-2" type="number" name="edad" placeholder="Edad">
         <input class="form-control mb-2" type="text" name="marca" placeholder="Marca">
         <input class="form-control mb-2" type="text" name="modelo" placeholder="Modelo">
+        <select class="form-control mb-2" name="categoria">
+            <option value="1">Trackdeable</option>
+            <option value="2">JDM</option>
+        </select>
+        <input class="form-control mb-2" type="text" name="etiqueta" placeholder="ingrese etiqueta">
+        <input class="form-control mb-2" type="number" name="anio" placeholder="Año">
         <input class="form-control mb-2" type="text" name="descripcion" placeholder="Descripcion">
         <input class="form-control mb-2" type="file" name="imagen" accept="image/*">
         <button class="btn btn-primary btn-block" type="submit">Subir</button>

@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/wamp64/www/proyectolaravel/app/Http/Controllers/UserController.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/resources/views/formulario.blade.php</file>
             <file>file:/C:/wamp64/www/proyectolaravel/routes/web.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/app/Auto.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/resources/views/posteo.blade.php</file>
         </group>
     </open-files>
 </project-private>

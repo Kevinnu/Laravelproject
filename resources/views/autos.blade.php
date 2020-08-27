@@ -26,8 +26,7 @@
                 </div>
             </div>
         </div>
-        @endforeach        
+        @endforeach 
     </div>
-    {{$autos->links()}}
 </div>
 @endsection

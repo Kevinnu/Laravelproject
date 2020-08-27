@@ -74,9 +74,10 @@ class UserController extends Controller {
     public function cargarautos(Request $request) {
         $request->validate([
             'nombre' => 'required',
-            'edad' => 'required',
             'marca' => 'required',
             'modelo' => 'required',
+            'anio' => 'required',
+            'categoria' => 'required',
             'descripcion' => 'required',
             'imagen' => 'required'
         ]);
@@ -87,9 +88,10 @@ class UserController extends Controller {
         }
         $auto = new App\Auto();
         $auto->nombre = $request->nombre;
-        $auto->edad = $request->edad;
         $auto->marca = $request->marca;
         $auto->modelo = $request->modelo;
+        $auto->anio = $request->anio;
+        $auto->categoria = $request->categoria;
         $auto->descripcion = $request->descripcion;
         $auto->imagen = $newname;
         $auto->save();
@@ -104,9 +106,10 @@ class UserController extends Controller {
     public function updateautos(Request $request, $id) {
         $autosedit = App\Auto::findorfail($id);
         $autosedit->nombre = $request->nombre;
-        $autosedit->edad = $request->edad;
         $autosedit->marca = $request->marca;
         $autosedit->modelo = $request->modelo;
+        $autosedit->anio = $request->anio;
+        $autosedit->categoria = $request->categoria;
         $autosedit->descripcion = $request->descripcion;
         $autosedit->save();
         return back()->with('mensaje', 'El auto fue editado');
@@ -119,13 +122,13 @@ class UserController extends Controller {
     }
 
     public function post(Request $request) {
-        $autos = App\Auto::orderBy('created_at','DESC')->paginate(9);
+        $autos = App\Auto::orderBy('created_at', 'DESC')->paginate(9);
         return view('autosglobal', compact('autos'));
     }
 
     public function start() {
-        $post = App\Auto::orderBy('created_at', 'DESC')->paginate(4);
-        return view('publicaciones', compact('post'));
+        $autos = App\Auto::orderBy('created_at', 'DESC')->paginate(4);
+        return view('posteo',compact('autos'));
     }
 
 }

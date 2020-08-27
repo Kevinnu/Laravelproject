@@ -3,8 +3,7 @@
 @section('autos')
 <div class="container">
    @if(session('mensaje'))
-    <div class="row">
-        
+    <div class="row col-md-12">
         <div class="card">
             <div class="card-header">
                 Featured
@@ -23,6 +22,12 @@
                     <img src="images/{{$auto->imagen}}" class="card-img-top" style="width: 350px; height: 232px;">
                 </a>
                 <div class="card-body">
+                        <div class="float-right badge badge-primary text-wrap" style="width: 6rem;">
+                            {{$auto->categoria->nombre}}
+                        </div>
+                    <div class="float-right badge badge-primary text-wrap" style="width: 6rem;">
+                            {{$auto->etiqueta}}
+                        </div>
                     <p class="card-text"><strong>{{$auto->marca. " " . $auto->modelo}}</strong></p>
                     <p class="card-text">Dueño {{$auto->nombre}} <br>{{$auto->descripcion}}</p>
                 </div>

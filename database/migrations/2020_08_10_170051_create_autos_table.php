@@ -16,9 +16,10 @@ class CreateAutosTable extends Migration
         Schema::create('autos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->integer('edad');
             $table->string('marca');
             $table->string('modelo');
+            $table->integer('anio');
+            $table->unsignedBigInteger('categoria_id');
             $table->text('descripcion');
             $table->string('imagen');
             $table->string('usuario');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Etiqueta;
+use App\Auto;
 use App;
 
 class AutoController extends Controller {
@@ -39,6 +41,8 @@ class AutoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+       
+        Auto::truncate();
         $autos = new App\Auto();
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
@@ -46,12 +50,14 @@ class AutoController extends Controller {
             $imagen->move(public_path() . '/images/', $newname);
         }
         $autos->nombre = $request->nombre;
-        $autos->edad = $request->edad;
         $autos->marca = $request->marca;
         $autos->modelo = $request->modelo;
+        $autos->anio = $request->anio;
+        $autos->categoria_id = $request->categoria;
         $autos->descripcion = $request->descripcion;
         $autos->imagen = $newname;
         $autos->usuario = auth()->user()->email;
+        $autos->etiquetas()->attach([$request->etiqueta]);
         $autos->save();
 
         return back()->with('mensaje', 'Auto agregado!');
@@ -88,9 +94,10 @@ class AutoController extends Controller {
     public function update(Request $request, $id) {
         $autoedit = App\Auto::findorfail($id);
         $autoedit->nombre = $request->nombre;
-        $autoedit->edad = $request->edad;
         $autoedit->marca = $request->marca;
         $autoedit->modelo = $request->modelo;
+        $autoedit->anio = $request->anio;
+        $autoedit->categoria = $request->categoria;
         $autoedit->descripcion = $request->descripcion;
         if ($request->hasfile('imagen')) {
             $autoedit->imagen = $request->imagen;
