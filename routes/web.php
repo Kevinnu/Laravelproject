@@ -99,3 +99,8 @@ Route::get('libros', function () {
     $libros = Libro::all();
     return view('libros', compact('libros'));
 });
+
+Route::get('vehiculos',function(){
+    $vehiculos = App\Vehiculo::all();
+    return view('vehiculos', compact('vehiculos'));
+});

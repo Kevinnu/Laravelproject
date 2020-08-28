@@ -3,11 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/wamp64/www/proyectolaravel/routes/web.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/app/Etiqueta.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/resources/views/libros.blade.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/database/migrations/2020_08_26_213710_create_etiquetas_table.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/resources/views/posteo.blade.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/database/migrations/2020_08_26_213908_create_etiqueta_libro_table.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/database/migrations/2020_08_26_213039_create_libros_table.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/database/seeds/LibrosTableSeeder.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/app/Categoria.php</file>
             <file>file:/C:/wamp64/www/proyectolaravel/app/Http/Controllers/UserController.php</file>
             <file>file:/C:/wamp64/www/proyectolaravel/resources/views/formulario.blade.php</file>
-            <file>file:/C:/wamp64/www/proyectolaravel/routes/web.php</file>
             <file>file:/C:/wamp64/www/proyectolaravel/app/Auto.php</file>
-            <file>file:/C:/wamp64/www/proyectolaravel/resources/views/posteo.blade.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/database/migrations/2020_08_10_170051_create_autos_table.php</file>
+            <file>file:/C:/wamp64/www/proyectolaravel/app/Libro.php</file>
         </group>
     </open-files>
 </project-private>
