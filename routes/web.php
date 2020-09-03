@@ -22,42 +22,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('prueba', function() {
-    return 'Hola mundo';
-});
-
-Route::get('user/{name}', function($name = null) {
-    return 'El nombre es: ' . $name;
-})->where('name', '[A-Za-z]+');
-
-Route::get('user/{id?}', function($id = null) {
-    return 'El id es: ' . $id;
-})->where('id', '[0-9]+');
-
-Route::get('user/{nombre}/{apellido}/{edad}', function($nombre, $apellido, $edad) {
-    return 'El usuario es: ' . $nombre . " " . $apellido . " y tiene " . $edad . " años";
-})->where(['nombre' => '[A-Za-z]+', 'apellido' => '[A-Za-z]+', 'edad' => '[0-9]+']);
-
-Route::get('usuario/{nombre}/{apellido}/{edad}', 'UserController@mostrartemplate'); //Misma funcion que arriba pero logica en UserController y restricciones de caracteres en RouteServiceProvider
-
-Route::get('section/{tema}', function($tema) {
-    return 'El tema de la noticia es ' . $tema;
-})->where(['tema' => '[A-za-z]+']);
-
-Route::get('usuario/{id}', function($id) {
-    return 'El id ingresado es: ' . $id;
-});
-
-Route::get('publico/{id?}', 'UserController@show'); //Se utiliza un controlador para las condiciones
-
-Route::get('publica', function() {
-    return view('users', ['name' => 'Jose']);
-});
-
-Route::get('publica2', function() {
-    return view('users')->with('name', 'Ignacion');
-});
-
 Route::get('publica3', 'UserController@saludo'); //Misma funcion que arriba pero la logica esta en el controlador UserController
 
 Route::get('base', 'UserController@inicio')->name('base'); //Si se quiere enlazar a un boton debe ponerse ->name() para poder enrutarlo
