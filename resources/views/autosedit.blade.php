@@ -13,9 +13,8 @@
         <input class="form-control mb-2" type="text" value="{{$auto->marca}}" name="marca" placeholder="Marca">
         <input class="form-control mb-2" type="text" value="{{$auto->modelo}}" name="modelo" placeholder="Modelo">
         <select class="form-control mb-2" name="categoria">
-            <option value="Tracdeable">Trackdeable</option>
-            <option value="Supermercable">Supermercable</option>
-            <option value="Stanced">Stanced</option>
+            <option value="1">Trackdeable</option>
+            <option value="2">JDM</option>
         </select>
         <input class="form-control mb-2" type="number" value="{{$auto->anio}}" name="anio" placeholder="Año">
         <input class="form-control mb-2" type="text" value="{{$auto->descripcion}}" name="descripcion" placeholder="Descripcion">

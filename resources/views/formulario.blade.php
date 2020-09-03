@@ -30,7 +30,6 @@
             <option value="1">Trackdeable</option>
             <option value="2">JDM</option>
         </select>
-        <input class="form-control mb-2" type="text" name="etiqueta" placeholder="ingrese etiqueta">
         <input class="form-control mb-2" type="number" name="anio" placeholder="Año">
         <input class="form-control mb-2" type="text" name="descripcion" placeholder="Descripcion">
         <input class="form-control mb-2" type="file" name="imagen" accept="image/*">

@@ -23,7 +23,7 @@
                 </a>
                 <div class="card-body">
                         <div class="float-right badge badge-primary text-wrap" style="width: 6rem;">
-                            {{$auto->categoria->nombre}}
+                            {{$auto->categoria}}
                         </div>
                     <div class="float-right badge badge-primary text-wrap" style="width: 6rem;">
                             {{$auto->etiqueta}}

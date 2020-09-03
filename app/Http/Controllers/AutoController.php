@@ -57,7 +57,6 @@ class AutoController extends Controller {
         $autos->descripcion = $request->descripcion;
         $autos->imagen = $newname;
         $autos->usuario = auth()->user()->email;
-        $autos->etiquetas()->attach([$request->etiqueta]);
         $autos->save();
 
         return back()->with('mensaje', 'Auto agregado!');
@@ -97,7 +96,7 @@ class AutoController extends Controller {
         $autoedit->marca = $request->marca;
         $autoedit->modelo = $request->modelo;
         $autoedit->anio = $request->anio;
-        $autoedit->categoria = $request->categoria;
+        $autoedit->categoria_id = $request->categoria;
         $autoedit->descripcion = $request->descripcion;
         if ($request->hasfile('imagen')) {
             $autoedit->imagen = $request->imagen;
