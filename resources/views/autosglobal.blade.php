@@ -2,19 +2,17 @@
 
 @section('autos')
 <div class="container">
-   @if(session('mensaje'))
-    <div class="row col-md-12">
-        <div class="card">
-            <div class="card-header">
-                Featured
-            </div>
+    @if($autos[0]==NULL)
+    <div class="container">
+        <div class="card mt-5">
             <div class="card-body">
-                <h5 class="card-title">{{session('mensaje')}}</h5>
-                <p class="card-text">Si queres subir fotos de tu autos hace click en el boton</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p class="card-title text-center" style="font-size: 60px;">¡Aun no se han subido autos!</p>
+                <p class="card-text text-center">¡Se el primero en hacerlo! <br> Puedes subir tus autos haciendo click en el boton que esta abajo</p>
+                <a href="autosupload/create" class="btn btn-primary btn-block">Subir un auto</a>
             </div>
         </div>
-    @endif
+    </div>
+    @else
         @foreach($autos as $auto)
         <div class="float-left">
             <div class="card m-2">
@@ -35,6 +33,7 @@
         </div>
         @endforeach
     </div>
+   @endif
     {{$autos->links()}}
 </div>
 @endsection

@@ -41,8 +41,15 @@ class AutoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-       
-        Auto::truncate();
+        $request->validate([
+            'nombre'=>'required',
+            'marca'=>'required',
+            'modelo'=>'required',
+            'anio'=>'required',
+            'categoria'=>'required',
+            'descripcion'=>'required',
+            'imagen'=>'required'
+        ]);
         $autos = new App\Auto();
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');

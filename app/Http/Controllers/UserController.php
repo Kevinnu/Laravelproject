@@ -127,7 +127,7 @@ class UserController extends Controller {
     }
 
     public function start() {
-        $autos = App\Auto::orderBy('created_at', 'DESC')->paginate(4);
+        $autos = App\Auto::orderBy('created_at', 'DESC')->paginate(3);
         return view('posteo',compact('autos'));
     }
 

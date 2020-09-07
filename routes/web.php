@@ -14,7 +14,9 @@ use App\Libro;
   |
  */
 
-Route::get('/', function () {
+Route::get('/', 'UserController@start');
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
 

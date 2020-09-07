@@ -5,6 +5,17 @@
     @if(session('mensaje'))
     <div class="alert alert-success">{{session('mensaje')}}</div>
     @endif
+    @if($autos[0]==NULL)
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-body">
+                <p class="card-title text-center" style="font-size: 60px;">¡Aun no has subido un auto!</p>
+                <p class="card-text text-center">Puedes subir tus autos haciendo click en el boton que esta abajo</p>
+                <a href="autosupload/create" class="btn btn-primary btn-block">Subir un auto</a>
+            </div>
+        </div>
+    </div>
+    @else
     <div class="row">
         @foreach($autos as $auto)
         <div class="float-left">
@@ -28,5 +39,6 @@
         </div>
         @endforeach 
     </div>
+    @endif
 </div>
 @endsection

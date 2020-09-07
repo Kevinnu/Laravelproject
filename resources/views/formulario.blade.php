@@ -17,6 +17,9 @@
         @error('modelo')
         <div class="alert alert-danger">Falta ingresar el modelo</div>
         @enderror
+        @error('anio')
+        <div class="alert alert-danger">Falta ingresar el año del vehiculo</div>
+        @enderror
         @error('descripcion')
         <div class="alert alert-danger">Falta ingresar la descripcion</div>
         @enderror
