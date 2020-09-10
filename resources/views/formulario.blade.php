@@ -30,8 +30,9 @@
         <input class="form-control mb-2" type="text" name="marca" placeholder="Marca">
         <input class="form-control mb-2" type="text" name="modelo" placeholder="Modelo">
         <select class="form-control mb-2" name="categoria">
-            <option value="1">Trackdeable</option>
-            <option value="2">JDM</option>
+            @foreach($categorias as $categoria)
+            <option value="{{$categoria->id}}">{{$categoria->categoria}}</option>
+            @endforeach
         </select>
         <input class="form-control mb-2" type="number" name="anio" placeholder="Año">
         <input class="form-control mb-2" type="text" name="descripcion" placeholder="Descripcion">

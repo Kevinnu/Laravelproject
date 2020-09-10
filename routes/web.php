@@ -38,7 +38,7 @@ Route::put('editar/{id}', 'UserController@update')->name('usuarios.update');
 
 Route::delete('eliminar/{id}', 'UserController@eliminar')->name('usuarios.eliminar');
 
-Route::group(['middleware' => 'auth','middleware' => 'admin'], function() {
+Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function() {
 
     Route::get('formulario', function() {
         return view('formulario');
@@ -59,14 +59,4 @@ Route::get('autosglobal', 'UserController@post');
 
 Route::resource('autosupload', 'AutoController');
 
-Route::get('inicio','UserController@start')->name('inicio.pagina');
-
-Route::get('libros', function () {
-    $libros = Libro::all();
-    return view('libros', compact('libros'));
-});
-
-Route::get('vehiculos',function(){
-    $vehiculos = App\Vehiculo::all();
-    return view('vehiculos', compact('vehiculos'));
-});
+Route::get('inicio', 'UserController@start')->name('inicio.pagina');

@@ -2,7 +2,9 @@
 
 @section('autosedit')
 <div class="container">
-    <h1>Editar: {{$auto->marca." ".$auto->modelo}}</h1>
+    <div class="text-center">
+        <h1>Editar: {{$auto->marca." ".$auto->modelo}}</h1>
+    </div>
     @if(session('mensaje'))
     <div class="alert alert-success">{{session('mensaje')}}</div>
     @endif
@@ -23,7 +25,7 @@
     </form>
 </div>
 
-<div class="container">
+<div class="container mt-2">
     <div class="card" style="width: 500px; height: auto;">
         <a href="../../images/{{$auto->imagen}}"><img src="../../images/{{$auto->imagen}}" class="card-img-top" alt="..."></a>
         <div class="card-body">

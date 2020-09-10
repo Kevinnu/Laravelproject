@@ -28,10 +28,23 @@
                         </div>
                     <p class="card-text"><strong>{{$auto->marca. " " . $auto->modelo}}</strong></p>
                     <p class="card-text">Dueño {{$auto->nombre}} <br>{{$auto->descripcion}}</p>
+                  
+                 <!-- Panel exclusivo para administrador --> 
+                 
+                   @if($usuario[0]=="admin") 
+                    <a href="{{action('AutoController@edit',$auto->id)}}" class="btn btn-warning btn-sm">
+                        Editar
+                    </a>
+                    <form class="d-inline" action="{{action('AutoController@destroy',$auto->id)}}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                    </form> 
+                   @endif
                 </div>
             </div>
         </div>
-        @endforeach
+        @endforeach    
     </div>
    @endif
     {{$autos->links()}}

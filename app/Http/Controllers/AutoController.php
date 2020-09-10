@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Etiqueta;
-use App\Auto;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App;
 
 class AutoController extends Controller {
@@ -31,7 +30,8 @@ class AutoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('formulario');
+        $categorias = DB::table('autos_categoria')->get();
+        return view('formulario', compact('categorias'));
     }
 
     /**

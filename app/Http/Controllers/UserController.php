@@ -123,12 +123,17 @@ class UserController extends Controller {
 
     public function post(Request $request) {
         $autos = App\Auto::orderBy('created_at', 'DESC')->paginate(9);
-        return view('autosglobal', compact('autos'));
+        if (empty(auth()->user()->rol)) {
+            return view('autosglobal', compact('autos'));
+        } else {
+            $usuario = [auth()->user()->rol];
+            return view('autosglobal', compact('autos', 'usuario'));
+        }
     }
 
     public function start() {
         $autos = App\Auto::orderBy('created_at', 'DESC')->paginate(3);
-        return view('posteo',compact('autos'));
+        return view('posteo', compact('autos'));
     }
 
 }
