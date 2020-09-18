@@ -5,8 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Http\Middleware\Authenticate;
 
-class AdminMiddleware
-{
+class AdminMiddleware {
+
     /**
      * Handle an incoming request.
      *
@@ -14,11 +14,12 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        if(auth()->check() && auth()->user()->rol=='admin')
-        return $next($request);
-        
-        return redirect('autosglobal');
+    public function handle($request, Closure $next) {
+        if (auth()->check() && auth()->user()->rol == 'admin') {
+            return $next($request);
+        } else {
+            return redirect('inicio');
+        }
     }
+
 }

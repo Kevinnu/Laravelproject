@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller {
 
@@ -64,11 +65,6 @@ class UserController extends Controller {
         $usuarioeliminar = App\Usuario::findorfail($id);
         $usuarioeliminar->delete();
         return back()->with('mensaje', 'El usuario fue eliminado');
-    }
-
-    public function mostrar(Request $request) {
-        $autos = App\Auto::paginate(6);
-        return view('autos', compact('autos'));
     }
 
     public function cargarautos(Request $request) {
@@ -134,6 +130,45 @@ class UserController extends Controller {
     public function start() {
         $autos = App\Auto::orderBy('created_at', 'DESC')->paginate(3);
         return view('posteo', compact('autos'));
+    }
+
+    public function albumnes() {
+        $album_muestra = App\Album_fotos::all();
+        // $album_foto = App\Fotos::all();
+        return view('muestrario', compact('album_muestra'));
+    }
+
+    public function muestrario($id) {
+        
+        if(!empty(auth()->user()->email)){
+            $usuario = auth()->user()->email;
+        }
+        $fotos_muestra = App\Fotos::where('album',$id)->get();
+        //$fotos_muestra = DB::table('fotos')->select('*')->where('album', '=', $id,'usuario','=',$usuario)->get();
+        $id_album = App\Album_fotos::findOrFail($id);
+//        $comentarios = DB::table('comentarios')->select('*')->where('album_id', '=', $id)->get();
+        $comentarios= App\Comentario::where('album_id',$id)->get();
+        if (empty(auth()->user()->email)) {
+            return view('muestrario', compact('fotos_muestra', 'id_album', 'comentarios'));
+        } else {
+            $usuario = [auth()->user()->email];
+            return view('muestrario', compact('fotos_muestra', 'id_album', 'comentarios', 'usuario'));
+        }
+    }
+
+    public function comentario(Request $request, $id) {
+        $comentario = new App\Comentario;
+        $comentario->comentario = $request->comentario;
+        $comentario->album_id = $id;
+        $comentario->usuario = auth()->user()->email;
+        $comentario->save();
+        return back();
+    }
+
+    public function comentariodelete($id) {
+        $comentariodelete = App\Comentario::FindOrFail($id);
+        $comentariodelete->delete();
+        return back();
     }
 
 }

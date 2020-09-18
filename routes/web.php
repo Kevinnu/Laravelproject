@@ -38,13 +38,11 @@ Route::put('editar/{id}', 'UserController@update')->name('usuarios.update');
 
 Route::delete('eliminar/{id}', 'UserController@eliminar')->name('usuarios.eliminar');
 
-Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function() {
+Route::group(['middleware' => 'auth'], function() {
 
     Route::get('formulario', function() {
         return view('formulario');
     })->name('formulario');
-
-    Route::get('autos', 'UserController@mostrar')->name('autos');
 
     Route::post('autos', 'UserController@cargarautos')->name('autos.cargar');
 
@@ -55,8 +53,20 @@ Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function() {
     Route::delete('elimacion/{id}', 'UserController@deleteautos')->name('autos.eliminar');
 });
 
-Route::get('autosglobal', 'UserController@post');
+Route::get('autos', 'UserController@post')->name('autos');
 
 Route::resource('autosupload', 'AutoController');
 
+Route::resource('album', 'AlbumFotosController');
+
+Route::resource('fotos', 'FotosController');
+
 Route::get('inicio', 'UserController@start')->name('inicio.pagina');
+
+Route::get('prueba','UserController@albumnes');
+
+Route::get('prueba/{id}','UserController@muestrario');
+
+Route::post('prueda/{id}','UserController@comentario');
+
+Route::delete('prueba/{id}','UserController@comentariodelete');

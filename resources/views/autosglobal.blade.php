@@ -30,7 +30,8 @@
                     <p class="card-text">Dueño {{$auto->nombre}} <br>{{$auto->descripcion}}</p>
                   
                  <!-- Panel exclusivo para administrador --> 
-                 
+                 @if(empty($usuarios))
+                 @else
                    @if($usuario[0]=="admin") 
                     <a href="{{action('AutoController@edit',$auto->id)}}" class="btn btn-warning btn-sm">
                         Editar
@@ -41,6 +42,7 @@
                         <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
                     </form> 
                    @endif
+                 @endif
                 </div>
             </div>
         </div>
