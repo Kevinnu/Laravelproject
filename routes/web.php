@@ -57,16 +57,16 @@ Route::get('autos', 'UserController@post')->name('autos');
 
 Route::resource('autosupload', 'AutoController');
 
-Route::resource('album', 'AlbumFotosController');
+Route::resource('newalbum', 'AlbumFotosController');
 
-Route::resource('fotos', 'FotosController');
+Route::resource('newfotos', 'FotosController'); 
 
 Route::get('inicio', 'UserController@start')->name('inicio.pagina');
 
-Route::get('prueba','UserController@albumnes');
+Route::get('album','UserController@albumnes')->name('album.ver');
 
 Route::get('prueba/{id}','UserController@muestrario');
 
-Route::post('prueda/{id}','UserController@comentario');
+Route::post('prueda/{id}','UserController@comentario')->middleware('auth');
 
 Route::delete('prueba/{id}','UserController@comentariodelete');

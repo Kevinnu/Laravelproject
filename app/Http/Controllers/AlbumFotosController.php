@@ -20,7 +20,7 @@ class AlbumFotosController extends Controller
     
     public function index()
     {
-        return redirect('album/create');
+        return redirect('newalbum/create');
     }
 
     /**
@@ -44,7 +44,7 @@ class AlbumFotosController extends Controller
         $album = new Album_fotos();
         $album->nombre = $request->nombre;
         $album->save();
-        return redirect('fotos/create');
+        return redirect('newfotos/create');
     }
 
     /**

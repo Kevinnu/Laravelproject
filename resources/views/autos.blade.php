@@ -2,6 +2,7 @@
 
 @section('autos')
 <div class="container">
+    <div class="container">
     @if(session('mensaje'))
     <div class="alert alert-success">{{session('mensaje')}}</div>
     @endif
@@ -40,5 +41,6 @@
         @endforeach 
     </div>
     @endif
+    </div>
 </div>
 @endsection

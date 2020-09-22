@@ -23,14 +23,16 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-text">{{$comentario->comentario}}</p>
+                        <p class="float-left">{{$comentario->comentario}}</p>
                         @if(empty($usuario))
-                        @else
-                        <form action="{{action('UserController@comentariodelete',$comentario->id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                        </form>
+                        @elseif($usuario[0] == $comentario->usuario || $usuario_rol[0]=='admin')
+                        <div class="float-right">
+                            <form action="{{action('UserController@comentariodelete',$comentario->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm float-right">Eliminar</button>
+                            </form>
+                        </div>
                         @endif
                     </div>
                 </div>

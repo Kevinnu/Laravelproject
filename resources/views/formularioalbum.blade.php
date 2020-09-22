@@ -2,7 +2,7 @@
 
 @section('form')
 <div class="container">
-    <h1>Autos</h1>
+    <h1>Titulo del Album</h1>
     @if(session('mensaje'))
     <div class="alert alert-success">{{session('mensaje')}}</div>
     @endif

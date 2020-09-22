@@ -147,12 +147,13 @@ class UserController extends Controller {
         //$fotos_muestra = DB::table('fotos')->select('*')->where('album', '=', $id,'usuario','=',$usuario)->get();
         $id_album = App\Album_fotos::findOrFail($id);
 //        $comentarios = DB::table('comentarios')->select('*')->where('album_id', '=', $id)->get();
-        $comentarios= App\Comentario::where('album_id',$id)->get();
+        $comentarios= App\Comentario::orderBy('created_at','DESC')->where('album_id',$id)->get();
         if (empty(auth()->user()->email)) {
             return view('muestrario', compact('fotos_muestra', 'id_album', 'comentarios'));
         } else {
             $usuario = [auth()->user()->email];
-            return view('muestrario', compact('fotos_muestra', 'id_album', 'comentarios', 'usuario'));
+            $usuario_rol =[auth()->user()->rol];
+            return view('muestrario', compact('fotos_muestra', 'id_album', 'comentarios', 'usuario','usuario_rol'));
         }
     }
 

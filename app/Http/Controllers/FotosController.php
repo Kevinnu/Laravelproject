@@ -20,7 +20,7 @@ class FotosController extends Controller {
     }
     
     public function index() {
-        return redirect('album/create');
+        return redirect('newalbum/create');
     }
 
     /**
